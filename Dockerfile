@@ -41,10 +41,15 @@ RUN apt-get update \
 ##install supervisor and setup supervisord.conf file
     && apt-get install -y supervisor \
     && mkdir -p /var/log/supervisor
+RUN chmod -R 777 /var/log/supervisor
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY update.sh /etc/update.sh
 RUN chmod a+x /etc/update.sh 
+ENV USER_PASSWORD qloappsuserpassword
+ENV MYSQL_ROOT_PASSWORD myrootpassword
+ENV MYSQL_DATABASE mydatabase
+
 WORKDIR /home/${user}/www/hotelcommerce
 
 EXPOSE 3306 80 443
