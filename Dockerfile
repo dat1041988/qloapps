@@ -52,6 +52,6 @@ ENV MYSQL_DATABASE mydatabase
 
 WORKDIR /home/${user}/www/hotelcommerce
 
-EXPOSE 3306 80 443
+EXPOSE 3306 80 443 22
 
 CMD ["/usr/bin/supervisord"] 
